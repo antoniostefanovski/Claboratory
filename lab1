@@ -1,0 +1,128 @@
+Да се напише програма која ќе ги изведува основните математички операции (+, -, *, /, %) врз два броја кои се читаат од стандарден влез.
+
+// code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a=0, b=0;
+    scanf("%d %d", &a, &b);
+    printf("a + b = %d\n" , a + b);
+    printf("a - b = %d\n" , a - b);
+    printf("a * b = %d\n" , a * b);
+    printf("a / b = %d\n" , a / b);
+    printf("a %% b = %d\n" , a % b);
+    return 0;
+}
+
+
+Да се напише програма која за дадена сума на пари, ќе испечати со колку најмалку банкноти и монети може да се исплати. На влез се чита еден цел број. На излез се печатат 9 редови, по колку банкноти или монети од секој апоен ни се потребни за да ја исплатиме сумата. Пример 1583 денари, најдобро е да се исплати како:
+
+0*5000
+
+1*1000
+
+1*500
+
+0*100
+
+1*50
+
+3*10
+
+0*5
+
+1*2
+
+1*1
+
+// code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int pari, kusur;
+    scanf("%d", &pari);
+    kusur = pari / 5000.00;
+    printf("%d*5000\n", kusur);
+    pari = pari - (kusur*5000);
+    kusur = (int) pari / 1000.00;
+    printf("%d*1000\n", kusur);
+     pari = pari - (kusur*1000);
+    kusur = (int)pari / 500.00;
+    printf("%d*500\n", kusur);
+    pari = pari - (kusur*500);
+    kusur = (int)pari / 100.00;
+    printf("%d*100\n", kusur);
+    pari = pari - (kusur*100);
+    kusur = (int)pari / 50.00;
+    printf("%d*50\n", kusur);
+    pari = pari - (kusur*50);
+    kusur = (int)pari / 10.00;
+    printf("%d*10\n", kusur);
+    pari = pari - (kusur*10);
+    kusur = (int)pari / 5.00;
+    printf("%d*5\n", kusur);
+    pari = pari - (kusur*5);
+    kusur = (int)pari / 2.00;
+    printf("%d*2\n", kusur);
+    pari = pari - (kusur*2);
+    kusur = (int)pari / 1.00;
+    printf("%d*1\n", kusur);
+    return 0;
+}
+
+
+Да се напише програма која вчитува од стандарден влез два децимални броја (маса во кг и висина во цм) и пресметува и печати на стандарден излез индекс на телесна маса по формулата:
+
+$BMI = \frac{masa}{visina * visina}$
+
+Висината претходно треба да се претвори од сантиметри во метри.
+
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    float m, h;
+    scanf("%f %f", &m, &h);
+    h = h / 100.0;
+    float bmi;
+    bmi = (float)m / (h*h);
+    printf("%.2f\n", bmi);
+}
+
+Да се напише програма која пресметува просечна оцена во семестар. Програмата чита 5 цели броја. Треба да се испечати еден реален број на две децимали, просек на прочитаните броеви.
+
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a, b, c, d, e;
+    float avg;
+    scanf("%d %d %d %d %d", &a, &b, &c, &d, &e);
+    avg =  (float)(a+b+c+d+e)/5.0;
+    printf("%.2f", avg);
+}
+
+
+Да се напише програма коjа за даден цел броj секунди коj се чита од стандарден влез, ќе ги отпечати на екран соодветните вредности во часови, минути и секунди.
+
+//code 
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int n, h, m, s;
+    scanf("%d", &n);
+    h = (n/3600);
+    m = (n - (3600*h))/60;
+    s = (n -(3600*h)-(m*60));
+    printf("%d sekundi se %d casovi, %d minuti i %d sekundi\n", n, h, m, s);
+}
