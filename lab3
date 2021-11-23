@@ -1,0 +1,324 @@
+1. 
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int broj, s=0, a, b;
+    int p=1;
+    scanf("%d", &broj);
+    b=broj;
+    if(broj / 1000000 != 0 && broj / 1000000 <= 9) {
+        for(int i=1000000; i>0; i*=0.1) {
+            printf("%d \n", broj/i);
+            s+=broj/i;
+            p*=broj/i;
+            broj%=i;
+        }
+        printf("%d\n", s);
+        printf("%d\n", p);
+    }
+    else{
+        printf("Vneseniot broj ne e 7 cifren!");
+    }
+}
+
+2.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int a, b, c;
+    float r, r1, r2 = 0;
+    int kv = 0;
+    scanf("%d %d %d", &a, &b, &c);
+    kv = (b*b) - (4*a*c);
+    if (kv > 0) {
+        r1 = (-b - (sqrt(kv)))/(2*a);
+        r2 = (-b + (sqrt(kv)))/(2*a);
+        printf("Reshenija na ravenkata se: %.2f i %.2f", r1, r2);
+    }
+    else if (kv == 0) {
+        r = -b/(2*a);
+        printf("Dvojno reshenie na ravenkata e: %.2f", r);
+    }
+    else printf("Ravenkata nema realni reshenija");
+}
+
+3.
+#include <stdio.h>
+#include <stdlib.h>
+#include<math.h>
+int main()
+{
+    int i,n,n1,cif=0;
+    float kol=0;
+    scanf("%d",&n);
+    n1=n;
+        for( i=0;i<5;i++,n1/=10)
+        {
+            if(n1%10==5)
+            {
+                    cif++;
+                    kol+= 6*pow(10,i);
+            }
+                   else  kol+=n1%10*pow(10,i);
+        }
+        if(cif<2)
+        {
+            printf("Error");
+        }
+        else
+            printf("%.4f%%",fabs((n-kol))*(100/(float)n));
+
+return 0;
+}
+
+4.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int den, mesec, godina, username, username1;
+    den = n / 100000;
+    mesec = (n / 1000) % 100;
+    godina = n % 1000;
+    username = (den * 100) + (mesec * 1000) + (godina + 1000);
+    username1 = username;
+    int count = 0;
+    do {
+        username1 /= 10;
+        count++;
+    }while (username1 != 0);
+    if(count == 4) {
+        if (godina <= 960) {
+            username += 70000;
+            printf("%d", username); }
+        else if (godina >= 961 && godina <= 980) {
+            username += 80000;
+            printf("%d", username);
+        }
+        else if (godina >= 981 && godina <= 999){
+            username +=90000;
+            printf("%d", username);
+        }
+    }
+    else printf("%d", username);
+}
+
+5.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x1, x2, x3, y1, y2, y3;
+    int AB, AC, BC, AB1, AC1, BC1;
+    scanf("%d %d", &x1, &y1);
+    scanf("%d %d", &x2, &y2);
+    scanf("%d %d", &x3, &y3);
+    AB=((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+    AC=((x3-x1)*(x3-x1) + (y3-y1)*(y3-y1));
+    BC=((x3-x2)*(x3-x2) + (y3-y2)*(y3-y2));
+    AB1=sqrt(AB);
+    AC1=sqrt(AC);
+    BC1=sqrt(BC);
+    if (AB > AC && AB > BC)
+        printf("AB\n");
+    else if (AC > AB && AC > BC)
+        printf("AC\n");
+    else printf("BC\n");
+    return 0;
+}
+
+6.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int n;
+    int poceten, a, b = 0;
+    scanf("%d", &n);
+    poceten = n;
+    if(n > 10000 && n < 99999) {
+    while(n != 0) {
+        a = n % 10;
+        b = (b*10) + a;
+        n = n / 10;
+    }
+    if(poceten == b) printf("Palindrom");
+    else printf("Ne e palindrom");
+    }
+    else printf("Nevaliden vlez");
+}
+
+7.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int poeni, ocenka = 0;
+    char znak = ' ';
+    scanf("%d", &poeni);
+    if (poeni <= 0 || poeni >= 100)
+        printf("Nevalidna vrednost za poeni!\n");
+    else if(poeni > 90) ocenka = 10;
+    else if(poeni > 80) ocenka = 9;
+    else if(poeni > 70) ocenka = 8;
+    else if(poeni > 60) ocenka = 7;
+    else if(poeni > 50) ocenka = 6;
+    else ocenka = 5;
+    int poenib = poeni % 10;
+    if (ocenka != 5) {
+        if (poeni < 100 && (poenib >= 1 && poenib <= 3)) znak='-';
+        else if (ocenka != 11 && (poenib >= 8 || poenib == 0)) znak = '+';
+    }
+    if (ocenka != 0)
+    printf("Ocenka %d%c\n", ocenka, znak);
+}
+
+8.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int dd,mm,gggg,dm;
+    scanf("%d %d %d", &dd, &mm, &gggg);
+    if (mm == 1 || mm == 3 || mm == 5 || mm == 7 || mm == 8 || mm == 10 || mm == 12) dm=31;
+    else if (mm != 2 || mm == 4 || mm == 6 || mm == 9 || mm == 11) dm=30;
+    if (mm == 2)
+    { if(gggg % 400 == 0 || ((gggg %4 == 0) && (gggg %100 != 0))) dm=29;
+    else dm=28;
+    }
+    if(dd > 0 && dd <= dm && mm <= 12) printf("DA");
+    else printf("NE");
+    return 0;
+}
+
+9.
+#include <stdio.h>
+int main()
+{
+    float kwh;
+    scanf("%f",&kwh);
+    float cena;
+     float ddv;
+    float cenaddv;
+
+    if(kwh<=500)
+    {
+        cena=(kwh*5);
+    }
+    else if(kwh>500&&kwh<=650)
+    {
+        cena=(500*5)+((kwh-500)*7.5);
+
+    }
+    else if(kwh>650&&kwh<=850)
+    {
+        cena=(500*5)+(150*7.5)+((kwh-650)*11);
+    }
+    else{
+        cena=(500*5)+(150*7.5)+(200*11)+((kwh-850)*13.5);
+    }
+
+
+    if(cena<=7000)
+    {
+        ddv=(10*cena)/100;
+    }
+    else{
+        ddv=(18*cena)/100;
+    }
+
+    cenaddv=cena+ddv;
+    printf("%.2f",cenaddv);
+
+
+    return 0;
+}
+
+
+10.
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int num, num1, d1, d2, dl, dll, z, z1;
+    scanf("%d", &num);
+    num1 = num;
+     d1 = num / 1000000;
+     dl = num % 10;
+     d2 = (num/100000)%10;
+     dll = (num % 100)/10;
+     z = dl + dll;
+    int count = 0;
+    do {
+        num /= 10;
+        count++;
+    }while(num != 0);
+
+    if (count == 7) {
+        if (d1 == 0 || d2 == 0 || z == 0) {
+            printf("Nevaliden broj");
+        }
+        else if ((num1 % d1 == 0 && num1 % z != 0) || (num1 % d2 != 0 && num1 % z != 0)) {
+            printf("DA");
+        }
+        else printf("NE");
+    }
+    else return 0;
+}
+
+11.
+#include <stdio.h>
+
+int main()
+{
+    int broj,x1,x2,x3;
+    scanf("%d", &broj);
+
+    if(broj>10000000 && broj<99999999)
+    {
+        x1=broj/1000000;
+        x2=(broj%1000000)/1000;
+        x3=broj%1000;
+
+        if(x1==70 || x1==71 || x1==72)
+            printf("%03d/%03d-%03d T-mobile", x1,x2,x3);
+
+        if(x1==78 || x1==77 || x1==76 || x1==75)
+            printf("%03d/%03d-%03d A1", x1,x2,x3);
+
+        if(x1==79)
+            printf("%03d/%03d-%03d LycaMobile", x1,x2,x3);
+    }
+}
+
+12.
+#include <stdio.h>
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    if ((n % 3 == 0) && (n % 5 == 0)){
+        printf("Tik - Tak");
+    }
+    else if((n % 3 == 0) && (n % 5 != 0)) {
+        printf("Tik");
+    }
+    else if((n % 5 == 0) && (n % 3 != 0)) {
+        printf("Tak");
+    }
+    else {
+            printf("Losh Broj"); }
+}
