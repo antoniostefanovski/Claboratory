@@ -1,0 +1,258 @@
+1. Да се напише програма каде од тастатура се внесува одреден износ на пари кој корисник го има на својата трансакциска сметка. Потоа, во нов ред се внесува сумата на еден производ кој го купил, на кој дополнително треба да плати и ДДВ(18% од таа сума). Програмата печати 1 доколку после плаќањето на ДДВ корисникот има барем 1 денар на својата сметка, а 0 во спротивно.
+
+input: 25600
+       10000          
+output: 1
+
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int bb, pp;
+    scanf("%d\n%d", &bb, &pp);
+    pp = pp + (float)((18*pp)/100);
+    if (bb > pp) {
+        printf("1");
+    }
+    else {
+        printf("0");
+    }
+}
+
+
+2. Напишете код со којшто ќе вчитате три вредности x,y,z, и потоа еден по еден ќе ги извршите следниве изрази:
+y = ++x && (z+5 || --y)
+z = z-- || (x>y) && (x>z)
+Испечатете ги вредностите на x,y,z по секое извршување на горните изрази.
+
+//code
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int x, y, z;
+    scanf("%d %d %d", &x, &y, &z);
+    y = ++x && (z+5 || --y);
+    printf("%d %d %d\n", x, y, z);
+    z = z-- || (x>y) && (x>z);
+    printf("%d %d %d", x, y, z);
+}
+
+
+3. Да се напише програма која ќе чита три цели броја (x,y,z) од тастатура и на екран ќе го испечати резултатот од следниот израз ++x - --y + z++ + (x>z) Кој резултат ќе се добие доколку ги нема заградите, т.е. изразот е ++x - --y + z++ + x>z? Испечатете го и овај резултат, одделен со празно место од првиот резултат, како во примерот.
+
+// code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+   int x, y, z;
+   scanf("%d %d %d", &x, &y, &z);
+   printf("%d ", ++x - --y + z++ + (x>z));
+   printf("%d", ++x - --y + z++ + x>z);
+}
+
+4. https://prnt.sc/20o3rkx
+
+//code 
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+   int km, c, k, p, v, b, d, m, com1, com2;
+   scanf("%d", &km);
+   scanf("%d %d %d", &c, &k, &p);
+   scanf("%d %d %d %d", &v, &b, &d, &m);
+   com1 = c + (km-k)*p;
+   com2 = b + (km/v)*d + km*m;
+   printf("%d %d\n", com1, com2);
+   if (com1 <= com2) {
+    printf("1");
+   }
+   else {
+    printf("0");
+   }
+}
+
+5. https://prnt.sc/20o3umr
+// code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int index, a, b, c, d, e, f;
+    scanf("%d %d %d %d %d %d %d", &index, &a, &b, &c, &d, &e, &f);
+    float prosek;
+    prosek = (float)(a + b + c + d + e + f) / 6.0;
+    printf("Prosek: %.3f\n", prosek);
+    int godina;
+    godina = index;
+    while(godina >=100)
+    {
+        godina = godina / 100;
+    }
+    printf("Student: %d\n", index);
+    switch(godina) {
+    case 19:
+        printf("1 godina\n");
+        break;
+    case 18:
+        printf("2 godina\n");
+        break;
+    case 17:
+        printf("3 godina\n");
+        break;
+    case 16:
+        printf("4 godina\n");
+        break;
+    case 15:
+        printf("5 godina\n");
+        break;
+    case 14:
+        printf("6 godina\n");
+        break;
+    default:
+        printf("Ne e mozno\n");
+    }
+    if(prosek >= 9.5) {
+        printf("Nagraden: 1");
+    }
+    else {
+        printf("Nagraden: 0");
+    }
+}
+
+
+6. https://prnt.sc/20o3x47
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int broj, cifri;
+    scanf("%05d", &broj);
+    int vtordigit;
+    vtordigit = broj / 1000;
+    vtordigit = vtordigit % 10;
+    int vlastdigit;
+    vlastdigit = broj % 100;
+    vlastdigit = vlastdigit / 10;
+    int firstdigit;
+    firstdigit = broj / 1000;
+    firstdigit = firstdigit / 10;
+    int lastdigit;
+    lastdigit = broj % 10;
+    int sredishen;
+    sredishen = broj / 100;
+    sredishen = sredishen % 10;
+    int count=0;
+    do {
+        count++;
+        broj /= 10;
+    }
+    while(broj != 0);
+    if (count < 6) {
+        printf("%d %d %d", firstdigit + lastdigit, vtordigit + vlastdigit, sredishen);
+    }
+    else break;
+}
+
+7. https://prnt.sc/20o4038
+//code
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int bb, n=1, bb2, sumb=0, trosoci;
+    scanf("%d", &bb);
+    while (n<=5) {
+        scanf("%d", &trosoci);
+        sumb+=trosoci;
+        n++;
+    }
+    bb2=bb+sumb;
+    if(bb2 > 0) {
+        printf("1");
+    }
+    else {
+        printf("0");
+    }
+}
+
+8. https://prnt.sc/20o41t4
+
+//code
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char c, d, e;
+    scanf("%c %c %c", &c, &d, &e);
+    if(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
+    {
+        printf("1");
+    }
+    else if (c >= '0' && c <= '9') {
+        printf("1");
+    }
+    else {
+        printf("0");
+    }
+     if(d >= 'a' && d <= 'z' || d >= 'A' && d <= 'Z')
+    {
+        printf("1");
+    }
+    else if (d >= '0' && d <= '9') {
+        printf("1");
+    }
+    else {
+        printf("0");
+    }
+     if(e >= 'a' && e <= 'z' || e >= 'A' && e <= 'Z')
+    {
+        printf("1");
+    }
+    else if (e >= '0' && e <= '9') {
+        printf("1");
+    }
+    else {
+        printf("0");
+    }
+    printf("\n");
+    //
+       if(c >= 'a' && c <= 'z' || c >= 'A' && c <= 'Z')
+    {
+        printf("0");
+    }
+    else {
+        printf("1");
+    }
+
+        if(d >= 'a' && d <= 'z' || d >= 'A' && d <= 'Z')
+    {
+        printf("0");
+    }
+    else {
+        printf("1");
+    }
+
+        if(e >= 'a' && e <= 'z' || e >= 'A' && e <= 'Z')
+    {
+        printf("0");
+    }
+    else {
+        printf("1");
+    }
+
+
+}
