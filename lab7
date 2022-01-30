@@ -1,0 +1,36 @@
+4. #include <stdio.h>
+
+int obratenBroj (int broj) {
+    int obraten = 0;
+    while(broj) {
+        obraten = obraten * 10 + broj%10;
+        broj/=10;
+    }
+    return obraten;
+}
+
+int sumOfDigit (int broj) {
+    int sum = 0;
+    while(broj) {
+        sum+=broj%10;
+        broj/=10;
+    }
+    return sum;
+}
+
+void pecatiVoInterval (int a, int b) {
+    int i;
+    for(i=a; i<= b; i++) {
+        int zbir = i + obratenBroj (i);
+        if((zbir) % sumOfDigit(zbir) == 0)
+            printf("%d\n", i);
+    }
+}
+
+int main()
+{
+    int a, b;
+    scanf("%d %d", &a, &b);
+    pecatiVoInterval(a, b);
+    return 0;
+}
