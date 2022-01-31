@@ -1,0 +1,10 @@
+// 1va zadacha ( dodaj go samo void pred mainot i tolku e od zadachata )
+void matematickaOperacija (int a, int b, char operation, int * rezultat) {
+    switch(operation) {
+    case '+': * rezultat = a + b; break;
+    case '-': * rezultat = a - b; break;
+    case '*': * rezultat = a * b; break;
+    case '/': * rezultat = a / b; break;
+    case '%': * rezultat = a % b; break;
+    }
+}
