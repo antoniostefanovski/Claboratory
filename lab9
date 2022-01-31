@@ -8,3 +8,143 @@ void matematickaOperacija (int a, int b, char operation, int * rezultat) {
     case '%': * rezultat = a % b; break;
     }
 }
+
+// 2ra zadacha
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+double max (double * niza, int n) {
+    double maximum = * niza;
+    int i;
+    for(i=0; i<n; i++) {
+        if(* (niza+i) > maximum) {
+            maximum = *(niza+i);
+        }
+    }
+    return maximum;
+}
+
+double min (double * niza, int n) {
+    double minimum = * niza;
+    int i;
+    for(i=0; i<n; i++) {
+        if(* (niza+i) < minimum) {
+            minimum = *(niza+i);
+        }
+    }
+    return minimum;
+}
+
+void normalize (double * niza, int n) {
+    double maxniza = max(niza, n);
+    double minniza = min(niza, n);
+    int i;
+    for(i=0; i<n; i++) {
+        * (niza+i) = (*(niza+i) - minniza) / (maxniza - minniza);
+    }
+}
+
+void sort (double * niza, int n) {
+    while(1) {
+        int uslov = 1;
+        int i;
+        for(i=0;i<n;i++) {
+            if (*(niza+i) < * (niza+i+1)) {
+                double tmp = *(niza+i);
+                *(niza+i) = *(niza+i+1);
+                *(niza+i+1) = tmp;
+                uslov = 0;
+            }
+        }
+        if (uslov) return;
+    }
+}
+
+int main () {
+    
+    int i,n;
+    
+    scanf("%d", &n);
+    double niza [n];
+    
+    for (i=0;i<n;i++) {
+        scanf("%lf", &niza[i]);
+        
+    }
+    
+    printf("MAX -> %.3lf\n", max(niza,n));
+    printf("MIN -> %.3lf\n", min(niza,n));
+    
+    normalize(niza,n);
+    sort(niza,n);
+    
+     for (i=0;i<n;i++) {
+        printf("%.3f ", niza[i]);
+        
+    }
+    
+    return 0;
+
+}
+
+// 3ta zadacha
+#include<stdio.h>
+
+double max (double * niza, int n) {
+    double maximum = * niza;
+    int i;
+    for(i=0; i<n; i++) {
+        if(* (niza+i) > maximum) {
+            maximum = *(niza+i);
+        }
+    }
+    return maximum;
+}
+
+double min (double * niza, int n) {
+    double minimum = * niza;
+    int i;
+    for(i=0; i<n; i++) {
+        if(* (niza+i) < minimum) {
+            minimum = *(niza+i);
+        }
+    }
+    return minimum;
+}
+
+void normalize (double * niza, int n) {
+    double maxniza = max(niza, n);
+    double minniza = min(niza, n);
+    int i;
+    for(i=0; i<n; i++) {
+        * (niza+i) = (*(niza+i) - minniza) / (maxniza - minniza);
+    }
+}
+
+int main () {
+    
+    int i,n;
+    
+    scanf("%d", &n);
+    double niza[n];
+    
+    for (i=0;i<n;i++) {
+        scanf("%lf", &niza[i]);
+        
+    }
+    
+    printf("MAX -> %.3lf\n", max(niza,n));
+    printf("MIN -> %.3lf\n", min(niza,n));
+    
+    normalize(niza,n);
+    
+     for (i=0;i<n;i++) {
+        printf("%.3f ", niza[i]);
+        
+    }
+    
+    return 0;
+
+}
