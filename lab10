@@ -1,0 +1,35 @@
+// 1va zadacha
+#include <stdio.h>
+
+void writeToFile() {
+    FILE *f = fopen("text.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+int main() {
+    writeToFile();
+    
+     FILE * inputFile = fopen("text.txt", "r");
+
+    char line;
+
+    int smallLetter = 0, bigLetter = 0, letterCounter = 0;
+
+   while((line = fgetc(inputFile)) != EOF) {
+        if(isalpha(line)) {
+            if(islower(line)) {
+                smallLetter++;
+            }
+            if(isupper(line)) {
+                bigLetter++;
+            }
+            letterCounter++;
+        }
+    }
+    printf("%.4f\n%.4f", (float)bigLetter / letterCounter, (float)smallLetter / letterCounter);
+    return 0;
+}
