@@ -33,3 +33,60 @@ int main() {
     printf("%.4f\n%.4f", (float)bigLetter / letterCounter, (float)smallLetter / letterCounter);
     return 0;
 }
+
+
+// 3ta zadacha
+#include <stdio.h>
+
+void writeToFile() {
+    FILE *f = fopen("text.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+int main() {
+    writeToFile();
+    
+    FILE * inputFile = fopen("text.txt", "r");
+    
+    char line[1000], longestLine[1000];
+    
+    int wordsCounter = 0, totalCounter = 0, numOfRows = 0, i, max = 0;
+    
+    while(fgets(line, 1000, inputFile) != NULL) {
+        int length = strlen(line);
+        for(i=0; i < length; i++) {
+            if(line[i] == ' ' || line[i] == '\n') {
+                wordsCounter++;
+                totalCounter++;
+            }
+        }
+        if (wordsCounter > max) {
+            max = wordsCounter;
+            strcpy(longestLine, line);
+        }
+        numOfRows++;
+        printf("%d\n", wordsCounter);
+        wordsCounter = 0;
+    }
+    
+    printf("%.2f\n", (float)totalCounter/numOfRows);
+    
+    int longestLenght;
+    longestLenght = strlen(longestLine);
+    for (i=0; i<longestLenght; i++)
+    {
+        if (isupper(longestLine[i]))
+            longestLine[i] = tolower(longestLine[i]);
+        else if (islower(longestLine[i]))
+            longestLine[i] = toupper(longestLine[i]);
+    }
+    printf("%s ", longestLine);
+    
+    fclose(inputFile);
+        
+    return 0;
+}
