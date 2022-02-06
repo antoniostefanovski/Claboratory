@@ -240,3 +240,60 @@ int main() {
     fclose(inputFile);
     return 0;
 }
+
+
+// 5ta
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+// ne menuvaj ovde
+void wf() {
+    FILE *f = fopen("livce.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+int main() {
+    wf();
+	FILE * inputFile = fopen("livce.txt", "r");
+    
+    char shifra[10];
+    int tip; // 1 0 ili 2
+    int suma;
+    fscanf(inputFile,"%d", &suma);
+    float koeficient;
+    char maxShifra[10];
+    int maxTip;
+    float maxKoeficient;
+    int flag = 1;
+    float p = (float)suma;
+    
+    while(fscanf(inputFile,"%s",shifra) != EOF) {
+        fscanf(inputFile, "%d", &tip);
+        fscanf(inputFile, "%f", &koeficient);
+        p = p*koeficient;
+        
+        if(flag) {
+            strcpy(maxShifra,shifra);
+            maxTip=tip;
+            maxKoeficient=koeficient;
+            flag=0;
+        }
+        else {
+            if(koeficient > maxKoeficient) {
+                strcpy(maxShifra,shifra);
+                maxTip=tip;
+                maxKoeficient=koeficient;
+            }
+        }
+    }
+    printf("%s %d %.2f\n%.2f",maxShifra,maxTip,maxKoeficient,p);
+    fclose(inputFile);
+
+	return 0;    
+
+}
