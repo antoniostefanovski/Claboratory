@@ -144,3 +144,43 @@ int main() {
     }
     fclose(inputFile);
 }
+
+
+// 10ta
+#include <stdio.h>
+#include <ctype.h>
+// ne menuvaj ovde
+void wtf() {
+    FILE *f = fopen("dat.txt", "w");
+    char c;
+    while((c = getchar()) != '#') {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+int main() {
+    wtf();
+    char ch = getchar(); 
+    char z1,z2;
+    scanf("%c%c",&z1,&z2);
+    FILE *f;
+    if(!(f=fopen("dat.txt","r"))) printf("GRESKA");
+    while(!feof(f)){
+        char red[100];
+        fgets(red,100,f);
+        if(feof(f)) break;
+        int print = 0;
+        for(int i=0;i<100;i++){
+            if(red[i]==z2) break;
+            if(print) putchar(red[i]);
+            if(red[i]=='#') break;
+            if(red[i]==z1) print=1;
+
+        }
+        printf("\n");
+
+    }
+
+    return 0;
+}
