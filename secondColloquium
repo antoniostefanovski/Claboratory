@@ -184,3 +184,59 @@ int main() {
 
     return 0;
 }
+
+// 11ta zadacha
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+void wtf() {
+    FILE *f = fopen("input.txt", "w");
+    char c;
+    while((c = getchar()) != EOF) {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+void sort(char niza[],int a){
+    for(int i=0;i<a;i++){
+        for(int j=0;j<a-1;j++){
+            if(niza[j]>niza[j+1]){
+                int temp=niza[j];
+                niza[j]=niza[j+1];
+                niza[j+1]=temp;
+            }
+        }
+    }
+}
+
+int main() {
+    wtf();
+    FILE * inputFile = fopen("input.txt", "r");
+    
+    char line[80], line2[80];
+    
+    
+    while(fgets(line,80,inputFile) != NULL) {
+        int digitCounter = 0;
+        int len = strlen(line);
+        int i;
+        for(i=0; i<len; i++) {
+            if(isdigit(line[i])) {
+                line2[digitCounter] = line[i];
+                digitCounter++;
+            }
+        }
+        if(digitCounter == 0) {
+            continue;
+        } 
+        sort(line2, digitCounter);
+        printf("%d:", digitCounter);
+        for(i=0; i<digitCounter; i++) {
+        printf("%c", line2[i]);
+        }
+        printf("\n");
+    }
+    fclose(inputFile);
+    return 0;
+}
