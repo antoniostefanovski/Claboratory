@@ -88,3 +88,59 @@ int main()
     
     fclose(inputFile);
 }
+
+// 8ma zadacha
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+#define MAX 100
+// ne menuvaj ovde
+void wtf() {
+    FILE *f = fopen("dat.txt", "w");
+    char c;
+    while((c = getchar()) != EOF) {
+        fputc(c, f);
+    }
+    fclose(f);
+}
+
+int main() {
+    wtf();
+    FILE * inputFile = fopen("dat.txt", "r");
+    
+    char line[100], newLine[100];
+    
+    int digitCounter = 0, firstLine, lastLine = 0;
+    int max = 0, firstLineRes, lastLineRes;
+    
+    while(fgets(line, 100, inputFile) != NULL) {
+        int i;
+        for(i=0; i<strlen(line); i++) {
+            if(isdigit(line[i])) {
+                firstLine = i;
+                break;
+            }
+        }
+        for(i=strlen(line); i>firstLine; i--) {
+            if(isdigit(line[i])) {
+                lastLine = i+1;
+                break;
+            }
+        }
+        if(lastLine - firstLine > max || lastLine - firstLine == max) {
+            max = lastLine - firstLine;
+            strcpy(newLine, line);
+            firstLineRes = firstLine;
+            lastLineRes = lastLine;
+        }
+        firstLine = 0;
+        lastLine = 0;
+    }
+    
+    int i;
+    for(i=firstLineRes; i<lastLineRes; i++) {
+        printf("%c", newLine[i]);
+    }
+    fclose(inputFile);
+}
