@@ -54,3 +54,37 @@ int main() {
 
   return 0;
 }
+
+
+// 2ra zadacha
+int main()
+{
+    FILE * inputFile = fopen("text.txt", "r");
+    
+    int n, tmp;
+    
+    while (1) {
+        fscanf(inputFile, "%d", &n);
+        if (n == 0) {
+            break;
+        }
+        int max = 0;
+        int maxB = 0;
+        int i;
+        for(i=0; i<n; i++) {
+            int num;
+            fscanf(inputFile, "%d",  &num);
+            tmp = num;
+            while(tmp >= 9) {
+                tmp /= 10;
+            }
+            if (tmp > max) {
+                max = tmp;
+                maxB = num;
+            }
+        }
+        printf("%d\n", maxB);
+    }
+    
+    fclose(inputFile);
+}
