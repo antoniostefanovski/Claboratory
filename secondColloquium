@@ -59,7 +59,7 @@ int main() {
 // 2ra zadacha
 int main()
 {
-    FILE * inputFile = fopen("text.txt", "r");
+    FILE * inputFile = fopen("broevi.txt", "r");
     
     int n, tmp;
     
@@ -69,13 +69,13 @@ int main()
             break;
         }
         int max = 0;
-        int maxB = 0;
+        int maxB;
         int i;
         for(i=0; i<n; i++) {
             int num;
             fscanf(inputFile, "%d",  &num);
             tmp = num;
-            while(tmp >= 9) {
+            while(tmp > 9) {
                 tmp /= 10;
             }
             if (tmp > max) {
