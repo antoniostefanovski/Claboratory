@@ -200,3 +200,51 @@ int main()
 
     return 0;
 }
+
+
+// 6ta
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 100
+
+int main()
+{
+    int n, min, brojac=1, a[MAX][MAX], brojacn[MAX], max=0;
+    scanf("%d", &n);
+    for (int i=0; i<n; i++)
+    {
+        for(int j=0; j<n; j++)
+        {
+            scanf("%d", &a[i][j]);
+        }
+    }
+    for (int i=0; i<n; i++)
+    {
+        brojac=1;
+        brojacn[i]=1;
+        min=a[i][0];
+        for (int j=0; j<n; j++)
+        {
+            if (min<a[i][j])
+            {
+                min=a[i][j];
+                brojac++;
+                brojacn[i]=brojac;
+            }
+            else
+            {
+                min=a[i][j];
+                brojac=1;
+            }
+        }
+    }
+    for (int i=0; i<n; i++)
+    {
+        if (brojacn[i]>max)
+        {
+            max=brojacn[i];
+        }
+    }
+    printf("%d", max);
+    return 0;
+}
