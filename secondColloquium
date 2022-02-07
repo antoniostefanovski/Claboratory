@@ -578,3 +578,41 @@ int main()
     return 0;
 }
 
+
+// 19ta
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+void pomesti (char * string, int m) {
+    if(*string == '\0') return;
+
+    if (isalpha(*string)) {
+        int bukva = *string + m;
+        if(islower(*string)) {
+            if(bukva > 'z') bukva = bukva%'z' + 'a' - 1;
+        }
+        if (isupper(*string)) {
+            if(bukva > 'Z') bukva = bukva%'Z' + 'A' - 1;
+        }
+        * string = bukva;
+    }
+    pomesti (string+1, m);
+}
+
+
+int main()
+{
+    int n, m;
+    scanf("%d %d\n", &n, &m);
+
+    int i;
+    for(i=0; i<n; i++) {
+        char string[80];
+        fgets(string,80,stdin);
+        pomesti(string,m);
+        printf("%s", string);
+    }
+    return 0;
+}
