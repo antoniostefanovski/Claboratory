@@ -318,3 +318,51 @@ int main()
     }
     return 0;
 }
+
+// 10ta
+#include <stdio.h>
+#include <stdlib.h>
+#define max 100
+int main()
+{
+   int n,k,a[max],pog[max],pom[max],nov[max],brojac=0,brojac1=0;
+   scanf("%d",&n);
+   for(int i=0;i<n;i++)
+   {
+       scanf("%d",&a[i]);
+   }
+   scanf("%d",&k);
+   for(int i=0;i<n;i++)
+   {
+       if(k>a[i])
+       {
+           pom[brojac]=a[i];
+           brojac++;
+       }
+       else if(k<=a[i])
+       {
+           pog[brojac1]=a[i];
+           brojac1++;
+ 
+   }
+   }
+   int idk=brojac;
+   brojac=brojac1=0;
+   for(int i=0;i<idk;i++)
+   {
+       nov[i]=pom[brojac];
+       brojac++;
+   }
+   for(int i=brojac;i<n;i++)
+       {
+           nov[i]=pog[brojac1];
+           brojac1++;
+       }
+ 
+   for(int i=0;i<n;i++)
+   {
+       printf("%d ",nov[i]);
+   }
+ 
+   return 0;
+}
