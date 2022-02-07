@@ -248,3 +248,73 @@ int main()
     printf("%d", max);
     return 0;
 }
+
+
+// 2ra
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    char c, a[26]={'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'};
+    int k, ostatok, krajno;
+    scanf("%c%d", &c, &k);
+    for (int i=0; i<26; i++)
+    {
+        if (c==a[i])
+        {
+            if (k>26)
+            {
+                ostatok=k%26;
+                if (i+ostatok>26)
+                {
+                    krajno=26-i;
+                    ostatok=ostatok-krajno;
+                    i=0;
+                    printf("%c", a[i+ostatok]);
+                    break;
+                }
+                else
+                    printf("%c", a[i+ostatok]);
+            }
+            else
+                printf("%c", a[i+k]);
+        }
+    }
+    return 0;
+}
+
+// 5ta
+#include <stdio.h>
+#include <stdlib.h>
+#define MAX 100
+
+int main()
+{
+    int n, a[MAX], br_elementi, k, tmp, tmpk;
+    scanf("%d", &n);
+    for (int i=0; i<n; i++)
+    {
+        scanf("%d", &br_elementi);
+        for (int j=0; j<br_elementi; j++)
+        {
+            scanf("%d", &a[j]);
+        }
+        scanf("%d", &k);
+        tmpk=k;
+        for (int i=0; i<br_elementi; i++)
+        {
+            if (i==k-2 && k<=br_elementi)
+            {
+                tmp=a[i+1];
+                a[i+1]=a[i];
+                a[i]=tmp;
+                k+=tmpk;
+            }
+            printf("%d ", a[i]);
+        }
+        printf("\n");
+        k=0;
+    }
+    return 0;
+}
