@@ -145,6 +145,39 @@ int main() {
     fclose(inputFile);
 }
 
+// 3ta
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int sum_pos (int * arr, int ind, int n) {
+    int sum = 0;
+    while(ind < n) {
+        sum += *(arr+ind);
+        ind++;
+    }
+    return sum;
+}
+
+
+int main()
+{
+    int n;
+    scanf("%d", &n);
+    int array[n];
+    int i;
+    for(i=0; i<n; i++) {
+        scanf("%d", &array[i]);
+    }
+
+    int ind;
+    scanf("%d", &ind);
+
+    int suma = sum_pos(array, ind, n);
+    printf("%d", suma);
+    return 0;
+}
 
 // 10ta
 #include <stdio.h>
