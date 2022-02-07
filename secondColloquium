@@ -716,3 +716,74 @@ int main()
 
     return 0;
 }
+
+// 15ta
+#include <stdio.h>
+
+int poramnet(int num,int a,int b){
+    if(num)
+    {
+        int res = poramnet(num/10,a,b);
+        int t = num%10;
+        res *=10;
+        if(t==a){
+            t=b;
+        }
+        res = res + t;
+        return res;
+    }
+    return 0;
+}
+void sort(int *niza,int br){
+    for(int i=0;i<br;i++){
+        for(int j=0;j<br-1;j++){
+            if(*(niza+j)>*(niza+1+j)){
+            int temp=*(niza+j);
+            *(niza+j)=*(niza+1+j);
+            *(niza+1+j)=temp;
+        }
+        }
+    }
+}
+int main(){
+    int broj,nizamin[5],niza[100];
+    int a=9,b=7,br=0;
+    while(scanf("%d", &broj)){
+        int c=poramnet(broj,a,b);
+        niza[br]=c;
+        br++;
+    }
+    int n=5;
+    if(br<5){
+        n=br;
+    }
+    sort(niza,br);
+    for(int i=0;i<n;i++){
+        printf("%d ",niza[i]);
+    }
+}
+
+// 9ta
+#include <stdio.h>
+#define MAX 100
+
+float dropka(int *niza,int n,int i){
+    if(i==n-1){
+        int chlenot=*(niza+n-1);
+        return chlenot;
+    }
+    else{
+        int chlenot=*(niza+i);
+        return chlenot+(1/dropka(niza,n,i+1));
+    }
+}
+int main(){
+    int N, niza[MAX];
+    scanf("%d", &N);
+    for(int i=0;i<N;i++){
+        scanf("%d", &niza[i]);
+    }
+    int i=0;
+    printf("%f", dropka(niza,N,i));
+    return 0;
+} 
