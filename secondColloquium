@@ -514,3 +514,32 @@ int main()
 
     return 0;
 }
+
+
+// 16ta
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+int maxNum (int number, int maxNumber) {
+    if (number != 0) {
+        if (number % 10 > maxNumber) {
+            maxNumber = number % 10;
+            return maxNum(number/10, maxNumber);
+        }
+        else return maxNum(number/10, maxNumber);
+    }
+    return maxNumber;
+}
+
+
+int main()
+{
+    int num;
+    while(scanf("%d", &num)) {
+        int max = maxNum(num, 0);
+        printf("%d\n", max);
+    }
+    return 0;
+}
