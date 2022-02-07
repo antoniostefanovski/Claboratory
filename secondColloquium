@@ -365,3 +365,61 @@ int main() {
 	return 0;    
 
 }
+
+// 6ta
+#include <stdio.h>
+
+int main(){
+    int N,M;
+    scanf("%d %d", &N,&M);
+    int mat[N][M];
+    for(int i=0;i<N;i++){
+        for(int j=0;j<M;j++){
+            scanf("%d", &mat[i][j]);
+        }
+    }
+    int vkupno=0,brojach;
+    for(int i=0;i<N;i++){
+        brojach=0;
+        for(int j=0;j<M;j++){
+            if(mat[i][j]==1){
+                brojach++;
+                if(brojach>=3){
+                    vkupno++;
+                    break;
+                }
+            }
+            else{
+                if(brojach>=3){
+                    vkupno++;
+                    break;
+                }
+                else{
+                    brojach=0;
+                }    
+            }
+        }
+    }
+    for(int i=0;i<M;i++){
+        brojach=0;
+        for(int j=0;j<N;j++){
+            if(mat[j][i]==1){
+                brojach++;
+                if(brojach>=3){
+                    vkupno++;
+                    break;
+                }
+            }
+            else{
+                if(brojach>=3){
+                    vkupno++;
+                    break;
+                }
+                else{
+                    brojach=0;
+                }    
+            }
+        }
+    }
+    printf("%d", vkupno);
+}
